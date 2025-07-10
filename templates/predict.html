@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prediction Result - AI SkinScan</title>
+  <link href="{{ url_for('static', filename='css/demo.css') }}" rel="stylesheet" />
+</head>
+<body>
+
+
+<div class="header">
+  <div class="nav-container">
+          <div class="logo">
+          <a href="{{ url_for('main_landing') }}" style="text-decoration: none; color: inherit;">
+            <h2>AI SkinScan</h2> </a>
+  </div>
+    <ul class="nav-menu">
+      <li><a href="{{ url_for('main_landing') }}">Home</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-container" style="grid-template-columns: 1fr;">
+    <div class="hero-content" style="text-align: center;">
+
+      {% if error %}
+        <div style="color: red; font-weight: bold; margin-bottom: 20px;">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      {% if not prediction %}
+        <h1>Upload Your Image</h1>
+        <p class="hero-description">
+          🔍 Please upload a close-up of a skin lesion or mole. Other images may result in incorrect predictions.
+        </p>
+
+        <div class="background">
+          <div class="imgUpload">
+            <form
+              action="/submit"
+              class="form-horizontal"
+              method="post"
+              enctype="multipart/form-data"
+              id="upload-form"
+            >
+              <div>
+                <label for="pwd" class="text">Upload your Image</label>
+                <div>
+                  <input type="file" name="my_image" id="pwd" class="upload-label" required />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <button type="submit">Submit</button>
+                </div>
+              </div>
+
+              <div
+                id="loading-spinner"
+                style="display: none; text-align: center; margin-top: 15px;"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/spinner.gif') }}"
+                  alt="Loading..."
+                  style="width: 50px;"
+                />
+                <p>Processing your image, please wait...</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      {% else %}
+        <h1>Prediction Result</h1>
+
+        <div style="margin-top: 30px;">
+          <img
+            src="{{ url_for('static', filename='images/' + file_name) }}"
+            alt="Uploaded image"
+            style="max-width: 300px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px;"
+          />
+          <h2 style="color: #1f2937;">
+            The predicted image is: <i>{{ prediction }}</i>
+          </h2>
+          <h3 style="margin-top: 10px;">Model Accuracy: {{ accuracy }}%</h3>
+
+          {% if prediction == 'Benign' %}
+            <p style="color: green; font-weight: 600; margin-top: 10px;">
+              😊 Good news! The lesion appears to be benign. Keep monitoring regularly.
+            </p>
+          {% elif prediction == 'Malignant' %}
+            <p style="color: #e11d48; font-weight: 600; margin-top: 10px;">
+              ⚠️ This could be malignant. Please consult a dermatologist as soon as possible.
+            </p>
+                  <a href="https://www.skincancer.org/blog/" target="_blank" style="color: #751707; font-weight: 600; text-decoration: underline;">
+        Read more about melanoma detection & treatment →
+      </a>
+          {% endif %}
+
+          <div style="margin-top: 20px;">
+            <a href="{{ url_for('detect_page') }}" class="btn btn-secondary">Try Again</a>
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>AI SkinScan</h3>
+        <p>AI-powered skin cancer detection for early diagnosis and better outcomes.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Project Info</h4>
+        <p>College Project</p>
+        <p>Machine Learning & AI</p>
+      </div>
+      <div class="footer-section">
+        <h4>Technology</h4>
+        <p>Convolutional Neural Networks</p>
+        <p>Python & Flask</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AI SkinScan. Educational Project.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("upload-form");
+  const spinner = document.getElementById("loading-spinner");
+
+  form.addEventListener("submit", function () {
+    spinner.style.display = "block";
+  });
+</script>
+
+</body>
+</html>

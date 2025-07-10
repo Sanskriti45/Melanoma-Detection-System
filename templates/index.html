@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/3a2eaf6206.js"></script>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <title>Melanoma Detection</title>
+</head>
+<body>
+
+    <div class="header">
+        <a href="{{ url_for('main_landing') }}" class="logo">AI SkinScan</a>
+        <div class="header-right">
+            <a href="#" class="active">Home</a>
+        </div>
+    </div>
+    <div class="hero-section">
+  <h1>Detect Melanoma Early</h1>
+  <p>Upload your skin image and get a quick analysis using our CNN-based model.</p>
+    </div>
+
+<div class="info-section">
+    <h2>What is Melanoma?</h2>
+    <p>
+        Melanoma is a serious form of skin cancer that arises when pigment-producing cells mutate and become cancerous. 
+        It can spread rapidly if not detected early. Early diagnosis using image-based analysis is crucial for effective treatment.
+    </p>
+    <p>
+        Our system uses a Convolutional Neural Network (CNN) model to help identify melanoma from skin lesion images. 
+        Simply upload an image to get started.
+    </p>
+</div>
+
+<div class="background">
+    <div class="imgUpload">
+        <form action="/submit" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="pwd" class="text">Upload your Image</label>
+                <div>
+                    <input type="file" name="my_image" id="pwd" class="upload-label">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+        
+
+        {% if prediction %}
+        <img src="{{ url_for('static', filename='images/' + file_name)}}" alt="Uploaded image">
+
+        <h2 class="p-result">The predicted image is: <i class="p-result"> {{prediction}} </i></h2>
+
+        {% endif %}
+
+    </div>
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI SkinScan</h3>
+                    <p>AI-powered skin cancer detection for early diagnosis and better outcomes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Project Info</h4>
+                    <p>College Project</p>
+                    <p>Machine Learning & AI</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology</h4>
+                    <p>Convolutional Neural Networks</p>
+                    <p>Python & Flask</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI SkinScan. Educational Project.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

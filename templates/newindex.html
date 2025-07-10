@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SkinScan - AI-Powered Skin Cancer Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/demo.css') }}">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2>AI SkinScan</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>AI-Powered Melanoma Detection</h1>
+                    <p class="hero-subtitle">Advanced Convolutional Neural Network for Early Skin Cancer Detection</p>
+                    <p class="hero-description">
+                        Our cutting-edge CNN model analyzes skin lesion images to assist in early melanoma detection, 
+                        potentially saving lives through timely diagnosis.
+                    </p>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="300" fill="#f0f9ff"/>
+                            <circle cx="200" cy="150" r="80" fill="#e11d48" opacity="0.1"/>
+                            <circle cx="200" cy="150" r="60" fill="#e11d48" opacity="0.2"/>
+                            <circle cx="200" cy="150" r="40" fill="#e11d48" opacity="0.3"/>
+                            <text x="200" y="155" text-anchor="middle" fill="#374151" font-family="Arial" font-size="16">CNN Analysis</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About the Project</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Early Detection Saves Lives</h3>
+                        <p>
+                            Melanoma is the most dangerous form of skin cancer, but when detected early, 
+                            the 5-year survival rate is over 99%. Our project leverages the power of 
+                            Convolutional Neural Networks to analyze dermoscopic images and assist 
+                            healthcare professionals in early detection.
+                        </p>
+                        <h3>Deep Learning Approach</h3>
+                        <p>
+                            Using state-of-the-art CNN architecture, our model has been trained on 
+                            thousands of dermoscopic images to recognize patterns and features 
+                            associated with malignant melanoma, achieving high accuracy in classification.
+                        </p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>91%</h4>
+                            <p>Accuracy Rate</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>10,000+</h4>
+                            <p>Training Images</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>0.2s</h4>
+                            <p>Analysis Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Deep CNN Architecture</h3>
+                        <p>Advanced convolutional layers with dropout and batch normalization for optimal performance</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>High Accuracy</h3>
+                        <p>Trained model achieves 95%+ accuracy on validation datasets with robust performance metrics</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast Processing</h3>
+                        <p>Real-time image analysis with results delivered in under 0.2 seconds</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Medical Grade</h3>
+                        <p>Designed to assist healthcare professionals with reliable diagnostic support</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>User Friendly</h3>
+                        <p>Simple interface for easy image upload and instant analysis results</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy Focused</h3>
+                        <p>Secure processing with no storage of personal medical information</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Upload Image</h3>
+                        <p>Upload a dermoscopic image of the skin lesion</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>CNN Analysis</h3>
+                        <p>Our trained model analyzes the image features</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Receive classification results with confidence scores</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Experience AI-Powered Detection?</h2>
+                <p>Try our melanoma detection system and see the power of deep learning in healthcare.</p>
+                <a href="{{ url_for('detect_page') }}" class="btn btn-primary btn-large">Start Detection</a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AI SkinScan</h3>
+                    <p>AI-powered skin cancer detection for early diagnosis and better outcomes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Project Info</h4>
+                    <p>College Project</p>
+                    <p>Machine Learning & AI</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology</h4>
+                    <p>Convolutional Neural Networks</p>
+                    <p>Python & Flask</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI SkinScan. Educational Project.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
